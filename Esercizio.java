@@ -8,18 +8,46 @@ class Esercizio {
     // Il programma parte con una chiamata a main().
     public static void main(String args[])
     {
-        //Variabili del programma
-        String nome;
+        System.out.println("Quanti atleti ci sono in gara?");
+        int n = in.nextInt();
+        in.nextLine(); 
 
-        //Creo l'oggetto in per l'input da tastiera
-        Scanner in = new Scanner( System.in );
+        String nomi[] = new nomi[n];
+        String nazionali[] = new nazionali[n];
+        float tempi[] = new tempi[n];
 
-        //Leggo l'input da tastiera
-        System.out.print("Inserisci il tuo nome: ");
-        nome = in.nextLine();
+        for (int i = 0; i < n; i++) {
+            System.out.println("Nome del " + (i + 1) + "° atleta: ");
+            nomi[i] = in.nextLine();
 
-        //Output del nome acquisito da tastiera
-        System.out.println("Ciao "+nome+"!");
+            System.out.println("Nazionale del " + (i + 1) + "° atleta: ");
+            nazionali[i] = in.nextLine();
+
+            System.out.println("Tempo del " + (i + 1) + "° atleta: ");
+            tempi[i] = in.nextFloat();
+        }
+
+        System.out.println("Informazioni inserite:");
+        for (int i = 0; i < n; i++) {
+            System.out.println((i + 1) + "° atleta: " + nomi[i] +
+                    "; nazionale: " + nazionali[i] +
+                    "; tempo: " + tempi[i]);
+        }
+
+        System.out.println("Ricerca dell'atleta vincitore...");
+
+        int iMin = 0;
+        float min = tempi[0];
+        for (int i = 1; i < n; i++) {
+            if (tempi[i] < min) {
+                iMin = i;
+                min = tempi[i];
+            }
+        }
+
+        System.out.println("Atleta vincitore: " + nomi[iMin] +
+                "; nazionale: " + nazionali[iMin] +
+                "; tempo: " + tempi[iMin]);
     }
 }
 
